@@ -1,7 +1,7 @@
-# Alex - Creative Developer Portfolio
+# Abdallh Nasser Ahmed Mansour- Creative Developer Portfolio
 
 ## Overview
-This portfolio website showcases the work and skills of Alex Morgan, a creative frontend developer and UI/UX designer. The site features a modern design with interactive elements, smooth animations, and a responsive layout that works across all devices.
+This portfolio website showcases the work and skills of Abdallh Nasser, a creative frontend developer and UI/UX designer. The site features a modern design with interactive elements, smooth animations, and a responsive layout that works across all devices.
 
 ![Portfolio Screenshot](https://i.imgur.com/placeholder-image.png)
 
@@ -191,5 +191,5 @@ This project is licensed under the MIT License. Feel free to use it as a templat
 
 ---
 
-**Live Demo**: [https://alex-morgan-portfolio.netlify.app](https://alex-morgan-portfolio.netlify.app)  
-**GitHub Repository**: [https://github.com/yourusername/portfolio](https://github.com/yourusername/portfolio)
+**Live Demo**: [https://abdalluh-nasser-portfolio.netlify.app](https://alex-morgan-portfolio.netlify.app)  
+**GitHub Repository**: [https://github.com/Abdallh091/portfolio](https://github.com/yourusername/portfolio)
