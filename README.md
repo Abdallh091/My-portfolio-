@@ -3,7 +3,7 @@
 ## Overview
 This portfolio website showcases the work and skills of Abdallh Nasser, a creative frontend developer and UI/UX designer. The site features a modern design with interactive elements, smooth animations, and a responsive layout that works across all devices.
 
-![Portfolio Screenshot](https://i.imgur.com/placeholder-image.png)
+![Portfolio Screenshot](https://i.postimg.cc/bwfWprzR/file-000000006d9c620aa3de6c8a7dbb2162.png)
 
 ## Key Features
 
