@@ -75,7 +75,7 @@ index.html
 
 <!-- About Section -->
 <h3>Frontend Developer & UI/UX Designer</h3>
-<p>With over 5 years of experience...</p>
+<p>With over 2 Month of experience...</p>
 
 <!-- Contact Info -->
 <span>abdallhnasser2025@gmail.com</span>
