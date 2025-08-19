@@ -1,0 +1,16 @@
+// routes/userRoutes.js
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userController');
+const { protect } = require('../middleware/authMiddleware');
+
+// تسجيل مستخدم جديد
+router.post('/register', userController.registerUser);
+
+// تسجيل دخول المستخدم
+router.post('/login', userController.loginUser);
+
+// الحصول على معلومات المستخدم
+router.get('/profile', protect, userController.getUserProfile);
+
+module.exports = router;
