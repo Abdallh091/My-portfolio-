@@ -56,8 +56,46 @@ The site features a modern design with interactive elements, smooth animations, 
 
 ## Project Structure
 
-index.html │ ├── Preloader Section │   - Animated "ABDALLH." text │   - Gradient background │ ├── Header │   - Logo with gradient effect │   - Navigation links │   - Theme switcher │ ├── Hero Section │   - Main headline with gradient text │   - Call-to-action buttons │   - Scroll down indicator │ ├── About Section │   - Profile image with floating tech icons │   - Skill progress bars │   - Personal description │ ├── Projects Section │   - Project cards with hover effects │   - Tech tags │   - Live demo / details buttons │ ├── Contact Section │   - Contact info │   - Social media links │   - Contact form with floating labels │ ├── Footer │   - Copyright │ └── Scripts - Particles.js init - GSAP animations - Theme switching logic - Form validation - Scroll animations
-
+index.html
+│
+├── Preloader Section
+│   ├── Animated "ABDALLH." text
+│   └── Gradient background
+│
+├── Header
+│   ├── Logo with gradient effect
+│   ├── Navigation links
+│   └── Theme switcher
+│
+├── Hero Section
+│   ├── Main headline with gradient text
+│   ├── Call-to-action buttons
+│   └── Scroll down indicator
+│
+├── About Section
+│   ├── Profile image with floating tech icons
+│   ├── Skill progress bars
+│   └── Personal description
+│
+├── Projects Section
+│   ├── Project cards with hover effects
+│   ├── Tech tags
+│   └── Live demo / details buttons
+│
+├── Contact Section
+│   ├── Contact info
+│   ├── Social media links
+│   └── Contact form with floating labels
+│
+├── Footer
+│   └── Copyright
+│
+└── Scripts
+    ├── Particles.js init
+    ├── GSAP animations
+    ├── Theme switching logic
+    ├── Form validation
+    └── Scroll animations
 ---
 
 ## How to Customize
