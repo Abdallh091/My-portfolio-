@@ -21,26 +21,76 @@
       align-items: center;
       z-index: 9999;
       transition: opacity 0.5s ease, visibility 0.5s ease;
+      overflow: hidden;
     }
-    
+
+    /* تأثير التوهج البنفسجي */
+    #loader::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(157, 78, 221, 0.4) 0%, rgba(157, 78, 221, 0.2) 40%, transparent 70%);
+      animation: pulseGlow 3s infinite ease-in-out;
+      z-index: -1;
+    }
+
+    #loader::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(157, 78, 221, 0.3) 0%, transparent 70%);
+      animation: rotateGlow 8s infinite linear;
+      z-index: -1;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    @keyframes rotateGlow {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     #loader h1 {
       display: flex;
       gap: 5px;
       font-size: 3rem;
+      position: relative;
+      z-index: 2;
     }
-    
+
     #loader h1 span {
       display: inline-block;
       animation: ripple 1.2s ease-in-out infinite;
       color: white;
+      text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
     }
-    
+
     #loader h1 span:nth-child(1) { animation-delay: 0s; }
     #loader h1 span:nth-child(2) { animation-delay: 0.1s; }
     #loader h1 span:nth-child(3) { animation-delay: 0.2s; }
     #loader h1 span:nth-child(4) { animation-delay: 0.3s; }
     #loader h1 span:nth-child(5) { animation-delay: 0.4s; }
-    
+
     @keyframes ripple {
       0%, 100% { 
         transform: translateY(0) scale(1); 
@@ -48,28 +98,28 @@
       50% { 
         transform: translateY(-15px) scale(1.2); 
         color: #9d4edd; /* بنفسجي مميز */
-        text-shadow: 0 0 10px rgba(157, 78, 221, 0.7);
+        text-shadow: 0 0 15px rgba(157, 78, 221, 0.8);
       }
     }
-    
+
     /* إخفاء المحتوى الرئيسي أثناء التحميل */
     #main-content {
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.5s ease, visibility 0.5s ease;
     }
-    
+
     /* إظهار المحتوى الرئيسي بعد التحميل */
     .loaded #loader {
       opacity: 0;
       visibility: hidden;
     }
-    
+
     .loaded #main-content {
       opacity: 1;
       visibility: visible;
     }
-    
+
     /* حل مشكلة المربع الأزرق */
     *:focus {
       outline: none !important;
@@ -635,6 +685,223 @@
       margin-top: 20px;
     }
 
+    /* Certificates Section - أنماط جديدة */
+    .certificates-section {
+      background: linear-gradient(to bottom, rgba(15, 12, 41, 0.7), rgba(36, 36, 62, 0.7));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .certificate-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 25px;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .certificate-card:hover {
+      transform: translateY(-10px) rotateY(5deg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .certificate-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(255, 10, 120, 0.1));
+      opacity: 0;
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .certificate-card:hover::before {
+      opacity: 1;
+    }
+
+    .certificate-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-pink));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      animation: pulse 2s infinite;
+    }
+
+    .certificate-image {
+      height: 180px;
+      background: linear-gradient(45deg, #2c2a5e, #3d3a7c);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .certificate-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .certificate-card:hover .certificate-image img {
+      transform: scale(1.05);
+    }
+
+    .certificate-info {
+      text-align: center;
+    }
+
+    .certificate-title {
+      font-size: 1.4rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .certificate-issuer {
+      font-size: 1rem;
+      color: var(--primary-blue);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .certificate-date {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .certificate-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .certificate-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .certificate-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-lg);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .certificate-modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--primary-pink);
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .modal-body {
+      margin-bottom: 30px;
+    }
+
+    .modal-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .modal-details {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    .modal-details p {
+      margin-bottom: 15px;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: center;
+    }
+
     /* Contact Section */
     .contact-container {
       display: grid;
@@ -761,6 +1028,9 @@
       .hero h1 {
         font-size: 3rem;
       }
+      .certificates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
     }
 
     @media (max-width: 768px) {
@@ -773,7 +1043,7 @@
       .hero-buttons {
         flex-direction: column;
       }
-      .projects-grid {
+      .projects-grid, .certificates-grid {
         grid-template-columns: 1fr;
       }
       #loader h1 {
@@ -797,12 +1067,12 @@
     .social-links a {
       text-decoration: none;
     }
-    
+
     /* Added: Remove outline for mouse users but keep for keyboard */
     .btn, a, .social-icon {
       -webkit-tap-highlight-color: transparent;
     }
-    
+
     /* Click animation effect */
     .click-effect {
       position: absolute;
@@ -815,19 +1085,19 @@
       z-index: 99999;
       animation: ripple 0.6s linear;
     }
-    
+
     @keyframes ripple {
       to {
         transform: translate(-50%, -50%) scale(3);
         opacity: 0;
       }
     }
-    
+
     .cursor,
-.dot,
-#scroll-indicator {
-    display: none !important;
-}
+    .dot,
+    #scroll-indicator {
+        display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -855,7 +1125,7 @@
           <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#services">Services</a></li>
+            <li><a href="#certificates">Certificates</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
           <div class="theme-toggle" id="theme-toggle">
@@ -1018,6 +1288,192 @@
       </div>
     </section>
 
+    <!-- Certificates Section - قسم جديد -->
+    <section id="certificates" class="certificates-section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">My Certificates</h2>
+        <div class="certificates-grid">
+          <!-- Certificate 1 -->
+          <div class="certificate-card animate-on-scroll">
+            <div class="certificate-badge">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="certificate-image">
+              <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #2c2a5e, #3d3a7c);">
+                <span style="font-size: 2rem; color: #4361ee;">
+                  <i class="fab fa-react" style="font-size: 4rem;"></i>
+                </span>
+              </div>
+            </div>
+            <div class="certificate-info">
+              <h3 class="certificate-title">Advanced React Development</h3>
+              <span class="certificate-issuer">Meta Professional Certificate</span>
+              <span class="certificate-date">Issued: June 2023</span>
+              <p>Mastered advanced React concepts including hooks, context API, and performance optimization techniques.</p>
+            </div>
+            <div class="certificate-actions">
+              <button class="btn btn-primary view-certificate" data-certificate="certificate1">View Certificate</button>
+              <button class="btn btn-outline certificate-details" data-certificate="certificate1">Details</button>
+            </div>
+          </div>
+
+          <!-- Certificate 2 -->
+          <div class="certificate-card animate-on-scroll">
+            <div class="certificate-badge">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="certificate-image">
+              <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #2c2a5e, #3d3a7c);">
+                <span style="font-size: 2rem; color: #4361ee;">
+                  <i class="fab fa-js-square" style="font-size: 4rem;"></i>
+                </span>
+              </div>
+            </div>
+            <div class="certificate-info">
+              <h3 class="certificate-title">JavaScript Algorithms and Data Structures</h3>
+              <span class="certificate-issuer">freeCodeCamp</span>
+              <span class="certificate-date">Issued: March 2023</span>
+              <p>Developed strong foundational knowledge in JavaScript algorithms and data structure implementation.</p>
+            </div>
+            <div class="certificate-actions">
+              <button class="btn btn-primary view-certificate" data-certificate="certificate2">View Certificate</button>
+              <button class="btn btn-outline certificate-details" data-certificate="certificate2">Details</button>
+            </div>
+          </div>
+
+          <!-- Certificate 3 -->
+          <div class="certificate-card animate-on-scroll">
+            <div class="certificate-badge">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="certificate-image">
+              <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #2c2a5e, #3d3a7c);">
+                <span style="font-size: 2rem; color: #4361ee;">
+                  <i class="fas fa-paint-brush" style="font-size: 4rem;"></i>
+                </span>
+              </div>
+            </div>
+            <div class="certificate-info">
+              <h3 class="certificate-title">UI/UX Design Specialization</h3>
+              <span class="certificate-issuer">Google Career Certificates</span>
+              <span class="certificate-date">Issued: January 2023</span>
+              <p>Comprehensive training in user-centered design principles, prototyping, and usability testing methodologies.</p>
+            </div>
+            <div class="certificate-actions">
+              <button class="btn btn-primary view-certificate" data-certificate="certificate3">View Certificate</button>
+              <button class="btn btn-outline certificate-details" data-certificate="certificate3">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificate Modals -->
+    <div class="certificate-modal" id="certificate1-modal">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="modal-header">
+          <h3 class="certificate-title">Advanced React Development</h3>
+          <span class="certificate-issuer">Meta Professional Certificate</span>
+          <span class="certificate-date">Issued: June 2023 | Credential ID: META-REACT-2023-12345</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image">
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 250px; background: linear-gradient(135deg, #2c2a5e, #3d3a7c);">
+              <span style="font-size: 2rem; color: #4361ee;">
+                <i class="fab fa-react" style="font-size: 6rem;"></i>
+              </span>
+            </div>
+          </div>
+          <div class="modal-details">
+            <p>This professional certificate represents mastery of advanced React concepts and development practices.</p>
+            <p><strong>Skills Acquired:</strong></p>
+            <ul>
+              <li>Advanced React Hooks and Context API</li>
+              <li>Performance optimization techniques</li>
+              <li>State management with Redux</li>
+              <li>Server-side rendering with Next.js</li>
+              <li>Testing React applications</li>
+            </ul>
+            <p><strong>Duration:</strong> 6 months intensive program</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary">Verify Certificate</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="certificate-modal" id="certificate2-modal">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="modal-header">
+          <h3 class="certificate-title">JavaScript Algorithms and Data Structures</h3>
+          <span class="certificate-issuer">freeCodeCamp</span>
+          <span class="certificate-date">Issued: March 2023 | Credential ID: FCC-JS-2023-67890</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image">
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 250px; background: linear-gradient(135deg, #2c2a5e, #3d3a7c);">
+              <span style="font-size: 2rem; color: #4361ee;">
+                <i class="fab fa-js-square" style="font-size: 6rem;"></i>
+              </span>
+            </div>
+          </div>
+          <div class="modal-details">
+            <p>This certification demonstrates proficiency in JavaScript fundamentals including algorithms and data structures.</p>
+            <p><strong>Skills Acquired:</strong></p>
+            <ul>
+              <li>JavaScript syntax and control structures</li>
+              <li>Object-Oriented Programming in JavaScript</li>
+              <li>Functional Programming concepts</li>
+              <li>Data structures implementation</li>
+              <li>Algorithm scripting and optimization</li>
+            </ul>
+            <p><strong>Duration:</strong> 300 hours of coursework and projects</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary">Verify Certificate</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="certificate-modal" id="certificate3-modal">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="modal-header">
+          <h3 class="certificate-title">UI/UX Design Specialization</h3>
+          <span class="certificate-issuer">Google Career Certificates</span>
+          <span class="certificate-date">Issued: January 2023 | Credential ID: GOOGLE-UX-2023-54321</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image">
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 250px; background: linear-gradient(135deg, #2c2a5e, #3d3a7c);">
+              <span style="font-size: 2rem; color: #4361ee;">
+                <i class="fas fa-paint-brush" style="font-size: 6rem;"></i>
+              </span>
+            </div>
+          </div>
+          <div class="modal-details">
+            <p>This specialization covers the end-to-end UX design process from user research to interaction design and prototyping.</p>
+            <p><strong>Skills Acquired:</strong></p>
+            <ul>
+              <li>User research and empathy mapping</li>
+              <li>Wireframing and prototyping</li>
+              <li>Usability testing methodologies</li>
+              <li>Design systems and accessibility</li>
+              <li>Portfolio development</li>
+            </ul>
+            <p><strong>Duration:</strong> 6-month comprehensive program with capstone project</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary">Verify Certificate</a>
+        </div>
+      </div>
+    </div>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
       <div class="container">
@@ -1128,7 +1584,7 @@
     // Theme toggle - تم إصلاح المشكلة هنا
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle.querySelector('i');
-    
+
     // تحميل الوضع المحفوظ (إن وجد)
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light-mode') {
@@ -1136,10 +1592,10 @@
       themeIcon.classList.remove('fa-moon');
       themeIcon.classList.add('fa-sun');
     }
-    
+
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
-      
+
       // حفظ التفضيل في localStorage
       if (document.body.classList.contains('light-mode')) {
         localStorage.setItem('theme', 'light-mode');
@@ -1154,7 +1610,7 @@
 
     // Skill bars animation
     const skillBars = document.querySelectorAll('.skill-progress');
-    
+
     function animateSkillBars() {
       skillBars.forEach(bar => {
         const width = bar.getAttribute('data-width');
@@ -1177,7 +1633,7 @@
         }
       });
     }
-    
+
     window.addEventListener('scroll', checkScroll);
     window.addEventListener('load', checkScroll);
 
@@ -1185,7 +1641,7 @@
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       // Simple form validation
       let isValid = true;
       const inputs = contactForm.querySelectorAll('.form-control');
@@ -1197,24 +1653,24 @@
           input.style.borderColor = '';
         }
       });
-      
+
       if (isValid) {
         // Simulate form submission success
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        
+
         setTimeout(() => {
           submitBtn.textContent = 'Sent!';
           submitBtn.style.background = 'linear-gradient(90deg, #25d366, #128c7e)';
-          
+
           // Reset form after success
           setTimeout(() => {
             contactForm.reset();
             submitBtn.textContent = 'Send Message';
             submitBtn.style.background = '';
             submitBtn.disabled = false;
-            
+
             // Reset floating labels
             document.querySelectorAll('.form-label').forEach(label => {
               label.style.top = '15px';
@@ -1230,7 +1686,7 @@
 
     // Initialize GSAP animations
     gsap.registerPlugin(ScrollTrigger);
-    
+
     // Hero text animation
     gsap.from('.hero h1', {
       duration: 1.2,
@@ -1239,7 +1695,7 @@
       ease: 'power3.out',
       delay: 0.3
     });
-    
+
     gsap.from('.hero p', {
       duration: 1,
       y: 30,
@@ -1247,7 +1703,7 @@
       ease: 'power3.out',
       delay: 0.8
     });
-    
+
     gsap.from('.hero-buttons', {
       duration: 1,
       y: 30,
@@ -1255,7 +1711,7 @@
       ease: 'power3.out',
       delay: 1.2
     });
-    
+
     // Section title animations
     document.querySelectorAll('.section-title').forEach(title => {
       gsap.from(title, {
@@ -1268,7 +1724,7 @@
         opacity: 0
       });
     });
-    
+
     // حل نهائي لمشكلة المربع الأزرق
     document.addEventListener('mousedown', function(e) {
       if (e.button === 0) { // فقط لزر الفأرة الأيسر
@@ -1281,7 +1737,7 @@
         document.body.classList.remove('using-mouse');
       }
     });
-    
+
     // Click animation effect
     document.addEventListener('click', function(e) {
       // Create ripple effect
@@ -1290,11 +1746,59 @@
       ripple.style.left = e.clientX + 'px';
       ripple.style.top = e.clientY + 'px';
       document.body.appendChild(ripple);
-      
+
       // Remove ripple after animation completes
       setTimeout(() => {
         ripple.remove();
       }, 600);
+    });
+
+    // Certificate Modal Functionality
+    const certificateButtons = document.querySelectorAll('.certificate-details, .view-certificate');
+    const certificateModals = document.querySelectorAll('.certificate-modal');
+    const closeButtons = document.querySelectorAll('.modal-close');
+
+    certificateButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const certificateId = button.getAttribute('data-certificate');
+        const modal = document.getElementById(`${certificateId}-modal`);
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+      });
+    });
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modal = button.closest('.certificate-modal');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = ''; // Re-enable scrolling
+        }
+      });
+    });
+
+    // Close modal when clicking outside
+    certificateModals.forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = ''; // Re-enable scrolling
+        }
+      });
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        certificateModals.forEach(modal => {
+          if (modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+          }
+        });
+      }
     });
   </script>
 </body>
