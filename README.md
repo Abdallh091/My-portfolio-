@@ -1,4 +1,4 @@
-# 🚀 Abdallh Nasser - Creative Dev Portfolio
+# 🚀 Abdallh Nasser - Creative Developer Portfolio
 
 <div align="center">
   <img src="https://i.postimg.cc/bwfWprzR/file-000000006d9c620aa3de6c8a7dbb2162.png" alt="Portfolio Screenshot" width="80%">
